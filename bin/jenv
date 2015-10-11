@@ -1,0 +1,15 @@
+#! /bin/sh
+
+jdir='/Library/Java/JavaVirtualMachines'
+
+if [ $# -eq 0 ]; then
+    for file in `ls $jdir`; do
+        echo $file
+    done
+else
+    for file in `ls $jdir/$1/Contents/Home/bin`; do
+        echo $file
+        rm /usr/bin/$file
+        ln -s $jdir/$1/Contents/Home/bin/$file /usr/bin
+    done
+fi

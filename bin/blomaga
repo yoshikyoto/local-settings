@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    ruby ~/local/bin/blomaga.rb | pbcopy
+elif [ $1 = '-o' ]; then
+    ruby ~/local/bin/blomaga.rb
+fi

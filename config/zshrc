@@ -1,0 +1,164 @@
+# Setting for Mac terminal
+# Profile: Pro
+# font: 11 pt.
+# color: black alpha 90%
+# シェル ウインドウを閉じる前の確認: しない
+
+# 以下の設定は
+# http://qiita.com/harapeko_wktk/items/47aee77e6e7f7800fa03
+# https://gist.github.com/mollifier/4979906
+# を参考に書かれたもの
+
+# 色を使用可能に
+autoload -Uz colors
+colors
+
+# emacs風キーバインドにできるらしい
+# macでは標準でemacsキーバインドが使えるのでコメントアウト
+# bindley -e
+
+# プロンプト
+# 書き方参考: http://qiita.com/yamagen0915/items/77fb78d9c73369c784da
+# PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %"
+PROMPT="%{${fg[yellow]}%}[%n@%m]%{${reset_color}%} ${fg[cyan]}%~${reset_color}
+$ %"
+
+# color: black red green yellow blue magenda cyan white
+
+# 補完
+# 補完機能を有効にする
+autoload -Uz compinit
+compinit
+
+# 補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# ../ の後は今いるディレクトリを補完しない
+zstyle ':completion:*' ignore-parents parent pwd ..
+
+# sudo の後ろでコマンド名を補完する
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+       /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+# ps コマンドのプロセス名補完
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+
+# 日本語ファイル名を表示可能にする
+setopt print_eight_bit
+
+# beep を無効にする
+setopt no_beep
+
+# '#' 以降をコメントとして扱う
+setopt interactive_comments
+
+
+# 同時に起動したzshの間でヒストリを共有する
+# setopt share_history
+
+# 同じコマンドをヒストリに残さない
+setopt hist_ignore_all_dups
+
+# スペースから始まるコマンド行はヒストリに残さない
+setopt hist_ignore_space
+
+# ヒストリに保存するときに余分なスペースを削除する
+setopt hist_reduce_blanks
+
+
+##################################################
+# エイリアス
+
+alias c='cd'
+alias la='ls -la'
+alias rmi='rm -i'
+alias cpi='cp -i'
+alias mvi='mv -i'
+alias wget='curl -O' # wgetもホントはMacだけに設定したい
+alias l='ls'
+function fcopy() {
+    cat $1 | pbcopy
+}
+
+
+# emacsのためのエイリアス
+# alias e='emacsclient -a "" -t'
+alias e='emacs'
+alias ee='emacsclient'
+alias ee='emacs ~/.emacs.d/init.el'
+alias ekill='emacsclient -e "(kill-emacs)"'
+alias ep='emacs -p'
+alias eep='emacs -p ~/.emacs.d/init.el'
+alias zshrc='emacs ~/.zshrc'
+alias rc='emacs ~/.zshrc'
+function es() {
+    emacs /ssh:$1:
+}
+
+# path
+export PATH=$PATH:~/local/bin
+
+# sudo の後のコマンドでエイリアスを有効にする
+alias sudo='sudo '
+
+# lsの色付けをOSTYPEごとに行う
+case ${OSTYPE} in
+    darwin*)
+	# Mac
+	export CLICOLOR=1
+	alias ls='ls -G -F'
+	;;
+    linux*)
+	# Linux
+	alias ls='ls -F --color=auto'
+	;;
+esac
+
+# cdコマンドを書かずともディレクトリ名だけでcdすることができる
+# phpディレクトリがあったりするとコマンドが誤爆するのでやめた
+# setopt auto_cd
+
+# コマンドが見つからなかった場合のハンドラ
+command_not_found_handler() {
+#  勝手にemacsで開くようにしようととしたが、上のauto_cdと同じ理由により削除
+#     if [ -e $@ ]; then
+#         echo 'file exists'
+#         if [ -d $@ ] ; then
+#             echo 'dir exists'
+#             cd $@
+#             return
+#         fi
+#     fi
+    echo "コマンドではない。: $@"
+}
+
+
+## git のブランチ表示の設定
+# VCSの情報を取得するzshの便利関数 vcs_infoを使う
+autoload -Uz vcs_info
+
+# 表示フォーマットの指定
+# %b ブランチ情報
+# %a アクション名(mergeなど)
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+	psvar=()
+	LANG=en_US.UTF-8 vcs_info
+	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
+
+
+
+# setting for rabbitmq
+# export PATH=$PATH:/usr/local/sbin
+
+
+# setting for imagemagic
+# export MAGICK_HOME=$HOME/ImageMagick-6.9.1
+# export PATH=$MAGICK_HOME/bin:$PATH
+# export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
