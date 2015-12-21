@@ -1,0 +1,9 @@
+#! /bin/sh
+
+# for file in `ls -a config/`; do
+# done
+# みたいな感じにしたい
+
+ln -s ~/local/config/gitconfig ~/.gitconfig
+ln -s ~/local/config/gitignore_global ~/.gitignore_global
+ln -s ~/local/config/zshrc ~/.zshrc
