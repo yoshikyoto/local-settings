@@ -4,5 +4,4 @@ ARGV=("$@")
 MIN=0
 MAX=`expr $# - 1`
 NUM=`jot -r 1 $MIN $MAX`
-argv=("$@")
-echo ${argv[$NUM]}
+echo ${ARGV[$NUM]}
