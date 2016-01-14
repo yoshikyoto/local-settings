@@ -1,6 +1,6 @@
 [core]
 	editor = emacs
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/local/config/gitignore
 	[color]
 	ui = true
 [user]
@@ -19,9 +19,23 @@
 	p = push
 	d = diff
 	dc = diff --cached
-	ds = "!f() { git diff HEAD..stash@{$1}; };f"
-	sl = stash list
-	sp = "!f() { if [ $# -eq 0 ]; then git stash pop; else git stash pop stash@{$1}; fi; };f"
+
+# stash 関連
+        # stashしたものリストを表示
+	slist = stash list
+        # 指定した番号のものをpop
+        # 番号を指定しない場合は最新のものをpop
+	spop = "!f() { if [ $# -eq 0 ]; then git stash pop; else git stash pop stash@{$1}; fi; };f"
+        # コメントを付けてpush
+        spush = stash save
+        # untrackなものもまとめて、コメントをつけてpush
+        sall = stash save -u
+	sdiff = "!f() { git diff HEAD..stash@{$1}; };f"
+
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	stage = add
 	unstage = reset HEAD
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
