@@ -4,6 +4,7 @@
 # done
 # みたいな感じにしたい
 
+rm ~/.zshrc
+cp ~/local/config/.zshrc ~/.zshrc
 ln -s ~/local/config/gitconfig ~/.gitconfig
-ln -s ~/local/config/zshrc ~/.zshrc
 ln -s ~/local/config/agignore ~/.agignore
