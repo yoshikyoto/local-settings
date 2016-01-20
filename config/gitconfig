@@ -1,41 +1,43 @@
 [core]
-	editor = emacs
-	excludesfile = ~/local/config/gitignore
-	[color]
-	ui = true
+    editor = emacs
+    excludesfile = ~/local/config/gitignore
+    [color]
+    ui = true
 [user]
-	name = yoshikyoto
-	email = stb_yoshiyuki-s@hotmail.co.jp
+    name = yoshikyoto
+    email = stb_yoshiyuki-s@hotmail.co.jp
 [alias]
-	s = status
-	cm = commit
-	cmm = commit -m
-	co = checkout
-	coh = checkout HEAD
-	b = branch
-	cb = checkout -b
-	cob = checkout -b
-	sm = submodule
-	p = push
-	d = diff
-	dc = diff --cached
+    s = status
+    cm = commit
+    cmm = commit -m
+    co = checkout
+    coh = checkout HEAD
+    b = branch
+    cb = checkout -b
+    cob = checkout -b
+    sm = submodule
+    p = push
+    d = diff
+    dc = diff --cached
 
 # stash 関連
-        # stashしたものリストを表示
-	slist = stash list
-        # 指定した番号のものをpop
-        # 番号を指定しない場合は最新のものをpop
-	spop = "!f() { if [ $# -eq 0 ]; then git stash pop; else git stash pop stash@{$1}; fi; };f"
-        # コメントを付けてpush
-        spush = stash save
-        # untrackなものもまとめて、コメントをつけてpush
-        sall = stash save -u
-	sdiff = "!f() { git diff HEAD..stash@{$1}; };f"
+    # stashしたものリストを表示
+    slist = stash list
+    # 指定した番号のものをpop
+    # 番号を指定しない場合は最新のものをpop
+    spop = "!f() { if [ $# -eq 0 ]; then git stash pop; else git stash pop stash@{$1}; fi; };f"
+    # 指定した番号のstashを削除
+    sdelete = "!f() { git stash drop stash@{$1}; };f"
+    # コメントを付けてpush
+    spush = stash save
+    # untrackなものもまとめて、コメントをつけてpush
+    sall = stash save -u
+    sdiff = "!f() { git diff HEAD..stash@{$1}; };f"
 
-	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-	stage = add
-	unstage = reset HEAD
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    stage = add
+    unstage = reset HEAD
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
