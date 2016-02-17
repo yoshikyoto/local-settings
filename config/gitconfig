@@ -27,7 +27,7 @@
     # 番号を指定しない場合は最新のものをpop
     spop = "!f() { if [ $# -eq 0 ]; then git stash pop; else git stash pop stash@{$1}; fi; };f"
     # 指定した番号のstashを削除
-    sdelete = "!f() { git stash drop stash@{$1}; };f"
+    sdelete = "!f() { git stash drop stash@{$1}; echo stash drop によってキューの index が変わるので注意してください。; };f"
     # コメントを付けてpush
     spush = stash save
     # untrackなものもまとめて、コメントをつけてpush
