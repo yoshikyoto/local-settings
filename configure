@@ -1,10 +1,15 @@
 #! /bin/sh
 
+# TODO
 # for file in `ls -a config/`; do
 # done
 # みたいな感じにしたい
 
 rm ~/.zshrc
 cp ~/local/config/.zshrc ~/.zshrc
+
+rm ~/.gitconfig
 ln -s ~/local/config/gitconfig ~/.gitconfig
+
+rm ~/.agignore
 ln -s ~/local/config/agignore ~/.agignore
