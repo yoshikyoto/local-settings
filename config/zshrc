@@ -96,6 +96,8 @@ function es() {
 
 # path
 export PATH=$PATH:~/local/bin
+# php composer
+export PATH=$PATH:~/.config/composer/vendor/bin
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
