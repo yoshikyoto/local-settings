@@ -1,4 +1,7 @@
-# Setting for Mac terminal
+# 主にMacのiTermで利用することを想定したzshrcファイルです
+# 一応ubuntuとかcentosでも動くとは思います。
+
+# iTermのオススメ設定
 # Profile: Pro
 # font: 11 pt.
 # color: black alpha 90%
@@ -7,7 +10,7 @@
 # 以下の設定は
 # http://qiita.com/harapeko_wktk/items/47aee77e6e7f7800fa03
 # https://gist.github.com/mollifier/4979906
-# を参考に書かれたもの
+# を参考に書かれています
 
 # 色を使用可能に
 autoload -Uz colors
@@ -17,15 +20,13 @@ colors
 # macでは標準でemacsキーバインドが使えるのでコメントアウト
 # bindley -e
 
-# プロンプト
+# プロンプトの表示
 # 書き方参考: http://qiita.com/yamagen0915/items/77fb78d9c73369c784da
-# PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %"
+# color: black red green yellow blue magenda cyan white あたりが使える
+# [<ユーザー名>@<ホスト名>] <カレントディレクトリ> と表示する
 PROMPT="%{${fg[yellow]}%}[%n@%m]%{${reset_color}%} ${fg[cyan]}%~${reset_color}
 $ %"
 
-# color: black red green yellow blue magenda cyan white
-
-# 補完
 # 補完機能を有効にする
 autoload -Uz compinit
 compinit
@@ -52,8 +53,7 @@ setopt no_beep
 # '#' 以降をコメントとして扱う
 setopt interactive_comments
 
-
-# 同時に起動したzshの間でヒストリを共有する
+# 同時に起動したzshの間でヒストリを共有する設定
 # setopt share_history
 
 # 同じコマンドをヒストリに残さない
@@ -69,23 +69,22 @@ setopt hist_reduce_blanks
 ##################################################
 # エイリアス
 
-alias c='cd'
 alias la='ls -la'
+# -i は削除やコピー前に確認する
 alias rmi='rm -i'
 alias cpi='cp -i'
 alias mvi='mv -i'
-alias wget='curl -O' # wgetもホントはMacだけに設定したい
 alias l='ls'
 function fcopy() {
     cat $1 | pbcopy
 }
 
-
 # emacsのためのエイリアス
 # alias e='emacsclient -a "" -t'
-alias e='emacs'
+# alias emacs='emacs -nw'
+alias e='emacs -nw'
 alias ee='emacsclient'
-alias ee='emacs ~/.emacs.d/init.el'
+alias ei='emacs ~/.emacs.d/init.el'
 alias ekill='emacsclient -e "(kill-emacs)"'
 alias ep='emacs -p'
 alias eep='emacs -p ~/.emacs.d/init.el'
@@ -154,11 +153,15 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 
 
 
-# setting for rabbitmq
-# export PATH=$PATH:/usr/local/sbin
+# setting for rabbitmqexport PATH=$PATH:/usr/local/sbin
 
 
 # setting for imagemagic
 # export MAGICK_HOME=$HOME/ImageMagick-6.9.1
 # export PATH=$MAGICK_HOME/bin:$PATH
 # export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
+
+# setting for pear
+export PATH=$PATH:~/pear/bin
+
+EDITOR="emacs"

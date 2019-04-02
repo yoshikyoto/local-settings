@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "imageやvolumeを一括削除します"
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+docker volume rm $(docker volume ls |awk '{print $2}')
+
+echo "Data以下をホントにcleanにしたい場合は以下を実行してください"
+echo "rm -rf ~/Library/Containers/com.docker.docker/Data/*"
+
+echo ""
+echo "see https://qiita.com/ktsujichan/items/726e0f896e30b355fee1"
