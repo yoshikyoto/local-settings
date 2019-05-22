@@ -98,6 +98,8 @@ function es() {
 export PATH=$PATH:~/local/bin
 # php composer
 export PATH=$PATH:~/.config/composer/vendor/bin
+# nodebrew
+export PATH=$PATH:$HOME/.nodebrew/current/bin
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
