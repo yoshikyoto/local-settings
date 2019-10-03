@@ -94,6 +94,8 @@ function es() {
     emacs /ssh:$1:
 }
 
+alias intellij='open -a "IntelliJ IDEA.app"'
+
 # path
 export PATH=$PATH:~/local/bin
 # php composer
