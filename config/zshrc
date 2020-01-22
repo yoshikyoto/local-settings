@@ -99,7 +99,7 @@ alias intellij='open -a "IntelliJ IDEA.app"'
 # path
 export PATH=$PATH:~/local/bin
 # php composer
-export PATH=$PATH:~/.config/composer/vendor/bin
+export PATH=$PATH:~/.composer/vendor/bin
 # nodebrew
 export PATH=$PATH:$HOME/.nodebrew/current/bin
 
