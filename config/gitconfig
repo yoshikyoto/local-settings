@@ -1,26 +1,24 @@
 [core]
     editor = emacs
     excludesfile = ~/local/config/gitignore
-    [color]
+
+[color]
     ui = true
+
 [user]
-	name = yoshiyuki-sakamoto
+    name = yoshikyoto
     email = stb_yoshiyuki-s@hotmail.co.jp
+
 [alias]
     s = status
-    cm = commit
-    cmm = commit -m
     co = checkout
     coh = checkout HEAD
     b = branch
     cb = checkout -b
     cob = checkout -b
-    sm = submodule
-    p = push
-    d = diff
     dc = diff --cached
 
-# stash 関連
+    # stash 関連
     # stashしたものリストを表示
     slist = stash list
     # 指定した番号のものをpop
@@ -37,6 +35,7 @@
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
     stage = add
     unstage = reset HEAD
+
 [filter "lfs"]
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
