@@ -1,6 +1,7 @@
 [core]
     editor = emacs
     excludesfile = ~/local/config/gitignore
+	autocrlf = input
 
 [color]
     ui = true
@@ -17,6 +18,7 @@
     cb = checkout -b
     cob = checkout -b
     dc = diff --cached
+
 
     # stash 関連
     # stashしたものリストを表示
@@ -37,6 +39,9 @@
     unstage = reset HEAD
 
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
     required = true
+	process = git-lfs filter-process
+[pull]
+	rebase = false

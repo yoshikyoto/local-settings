@@ -94,6 +94,10 @@ function es() {
     emacs /ssh:$1:
 }
 
+# git 野便利なエイリアス
+# https://qiita.com/kyanny/items/10a57a4f1d2806e3a3b8
+alias git-branch-clean="git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %"
+
 alias intellij='open -a "IntelliJ IDEA.app"'
 
 # path
