@@ -105,7 +105,9 @@ export PATH=$PATH:~/local/bin
 # php composer
 export PATH=$PATH:~/.composer/vendor/bin
 # nodebrew
-export PATH=$PATH:$HOME/.nodebrew/current/bin
+export PATH=$PATH:~/.nodebrew/current/bin
+# pyenv
+export PATH=$PATH:~/.pyenv/shims
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
