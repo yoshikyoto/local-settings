@@ -108,6 +108,8 @@ export PATH=$PATH:~/.composer/vendor/bin
 export PATH=$PATH:~/.nodebrew/current/bin
 # pyenv
 export PATH=$PATH:~/.pyenv/shims
+# google cloud cli
+export PATH=$PATH:~/google-cloud-sdk/bin
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
