@@ -99,6 +99,7 @@ function es() {
 alias git-branch-clean="git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %"
 
 alias intellij='open -a "IntelliJ IDEA.app"'
+alias vscode='open -a "Visual Studio Code"'
 
 # path
 export PATH=$PATH:~/local/bin
