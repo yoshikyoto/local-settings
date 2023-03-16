@@ -94,10 +94,12 @@ function es() {
     emacs /ssh:$1:
 }
 
-# git 野便利なエイリアス
+# git の便利なエイリアス
 # https://qiita.com/kyanny/items/10a57a4f1d2806e3a3b8
 alias git-branch-clean="git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %"
 
+# その他
+alias sdk-list-java='sdk list java | grep installed'
 alias intellij='open -a "IntelliJ IDEA.app"'
 alias vscode='open -a "Visual Studio Code"'
 
