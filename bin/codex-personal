@@ -1,0 +1,5 @@
+#!/bin/sh
+# vscode の codex 拡張の設定で CODEX_HOME が設定できないので、
+# chatgpt.cliExecutable にこのスクリプトを指定することで CODEX_HOME を設定できるようにする
+export CODEX_HOME="$HOME/one-minutes/.codex"
+exec "$HOME/.local/share/mise/installs/codex/latest/bin/codex" "$@"
